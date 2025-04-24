@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Website Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../home.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .services-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .services-header h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .services-header p {
+            font-size: 1.2rem;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .service-section {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-section h3 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .service-section h3 i {
+            color: #4CAF50;
+            font-size: 2rem;
+        }
+        
+        .service-content {
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .service-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-content h4 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+        
+        .service-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .service-content ul li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .service-content ul li i {
+            color: #4CAF50;
+            margin-top: 0.3rem;
+        }
+        
+        .service-content code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #fff;
+        }
+        
+        .service-content pre {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .service-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .service-content .note {
+            background: #1a1a1a;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .service-content .warning {
+            background: #1a1a1a;
+            border-left: 4px solid #FF9800;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .service-content .tip {
+            background: #1a1a1a;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .service-content .example {
+            background: #1a1a1a;
+            border-left: 4px solid #9E9E9E;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../../home.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Comprehensive security solutions to protect your digital assets</p>
+        </div>
+    </section>
+
+    <div class="services-container">
+        <div class="services-header">
+            <h2>Security Services</h2>
+            <p>Professional security services to protect your business</p>
+        </div>
+
+        <!-- Vulnerability Assessment -->
+        <div class="service-section">
+            <h3><i class="fas fa-shield-alt"></i> Vulnerability Assessment</h3>
+            <div class="service-content">
+                <p>Our comprehensive vulnerability assessment service helps identify and address security weaknesses in your systems before they can be exploited.</p>
+
+                <h4>What We Offer</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Automated Scanning:</strong> Regular automated scans to identify common vulnerabilities</li>
+                    <li><i class="fas fa-check"></i> <strong>Manual Testing:</strong> Expert security professionals performing manual vulnerability testing</li>
+                    <li><i class="fas fa-check"></i> <strong>Custom Scripts:</strong> Development of custom scanning scripts for specific requirements</li>
+                    <li><i class="fas fa-check"></i> <strong>Compliance Checks:</strong> Verification against industry standards and regulations</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Key Features:</strong>
+                    <ul>
+                        <li>Real-time vulnerability detection</li>
+                        <li>Detailed vulnerability reports</li>
+                        <li>Risk assessment and prioritization</li>
+                        <li>Remediation guidance</li>
+                    </ul>
+                </div>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Regular vulnerability assessments are crucial for maintaining a secure environment.
+                </div>
+
+                <a href="/contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+
+        <!-- Penetration Testing -->
+        <div class="service-section">
+            <h3><i class="fas fa-user-secret"></i> Penetration Testing</h3>
+            <div class="service-content">
+                <p>Our penetration testing service simulates real-world attacks to identify security vulnerabilities in your systems.</p>
+
+                <h4>Testing Types</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Web Application Testing:</strong> Comprehensive testing of web applications</li>
+                    <li><i class="fas fa-check"></i> <strong>Network Testing:</strong> Assessment of network infrastructure security</li>
+                    <li><i class="fas fa-check"></i> <strong>Mobile App Testing:</strong> Security testing for mobile applications</li>
+                    <li><i class="fas fa-check"></i> <strong>API Testing:</strong> Security assessment of APIs and endpoints</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Methodology:</strong>
+                    <ul>
+                        <li>Reconnaissance and information gathering</li>
+                        <li>Vulnerability scanning and analysis</li>
+                        <li>Exploitation of identified vulnerabilities</li>
+                        <li>Post-exploitation assessment</li>
+                        <li>Detailed reporting and recommendations</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Penetration testing should only be performed with proper authorization.
+                </div>
+
+                <a href="/contact" class="cta-button">Schedule a Test</a>
+            </div>
+        </div>
+
+        <!-- Security Consulting -->
+        <div class="service-section">
+            <h3><i class="fas fa-headset"></i> Security Consulting</h3>
+            <div class="service-content">
+                <p>Our security consulting services provide expert guidance to help you implement and maintain robust security measures.</p>
+
+                <h4>Consulting Services</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Security Strategy:</strong> Development of comprehensive security strategies</li>
+                    <li><i class="fas fa-check"></i> <strong>Risk Assessment:</strong> Identification and evaluation of security risks</li>
+                    <li><i class="fas fa-check"></i> <strong>Compliance Guidance:</strong> Assistance with security compliance requirements</li>
+                    <li><i class="fas fa-check"></i> <strong>Incident Response:</strong> Development of incident response plans</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Our Approach:</strong>
+                    <ul>
+                        <li>Initial assessment and requirements gathering</li>
+                        <li>Customized security solutions</li>
+                        <li>Implementation support</li>
+                        <li>Ongoing monitoring and maintenance</li>
+                        <li>Regular security reviews and updates</li>
+                    </ul>
+                </div>
+
+                <div class="note">
+                    <strong>Note:</strong> Our consulting services are tailored to your specific needs and requirements.
+                </div>
+
+                <a href="/contact" class="cta-button">Consult with Us</a>
+            </div>
+        </div>
+
+        <!-- Security Training -->
+        <div class="service-section">
+            <h3><i class="fas fa-graduation-cap"></i> Security Training</h3>
+            <div class="service-content">
+                <p>Our security training programs help your team develop the skills and knowledge needed to maintain a secure environment.</p>
+
+                <h4>Training Programs</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Security Awareness:</strong> Basic security awareness training for all employees</li>
+                    <li><i class="fas fa-check"></i> <strong>Technical Training:</strong> Advanced security training for technical staff</li>
+                    <li><i class="fas fa-check"></i> <strong>Certification Prep:</strong> Preparation for security certifications</li>
+                    <li><i class="fas fa-check"></i> <strong>Custom Workshops:</strong> Tailored training for specific needs</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Training Features:</strong>
+                    <ul>
+                        <li>Interactive learning sessions</li>
+                        <li>Hands-on practical exercises</li>
+                        <li>Real-world case studies</li>
+                        <li>Regular assessments and feedback</li>
+                        <li>Certification upon completion</li>
+                    </ul>
+                </div>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Regular security training is essential for maintaining a strong security posture.
+                </div>
+
+                <a href="/contact" class="cta-button">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
+                </div>
+                <p>Comprehensive web security solutions to protect your digital assets.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/guides">Guides</a></li>
+                    <li><a href="/tutorials">Tutorials</a></li>
+                    <li><a href="/cheatsheets">Cheatsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Scanner. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../app.js"></script>
+</body>
+
+</html>

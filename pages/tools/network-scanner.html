@@ -10,7 +10,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../home.css">
+    <link rel="stylesheet" href="../../responsive.css">
     <style>
+        .back-button {
+            margin: 20px 60px;
+        }
+        
+        .back-button a {
+            display: inline-flex;
+            align-items: center;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-button a:hover {
+            color: #f1c40f;
+        }
+        
+        .back-button i {
+            margin-right: 0.5rem;
+        }
+        
         .page-content {
             padding: 40px 60px;
             color: white;
@@ -193,80 +215,12 @@
 </head>
 
 <body>
-    <section id="nav">
-        <div class="nav-img">
-            <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
-        </div>
-        <div class="nav-links">
-            <div class="nav-item">
-                <a href="#" class="nav-link">Tools <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-popup">
-                    <a href="/pages/tools/vulnerability-scanner.html">Vulnerability Scanner</a>
-                    <a href="/pages/tools/network-scanner.html">Network Scanner</a>
-                    <a href="/pages/tools/password-cracker.html">Password Cracker</a>
-                    <a href="/pages/tools/port-scanner.html">Port Scanner</a>
-                    <a href="/pages/tools/ssl-checker.html">SSL Checker</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <a href="#" class="nav-link">Features <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-popup">
-                    <a href="/features/automated-scanning">Automated Scanning</a>
-                    <a href="/features/real-time-monitoring">Real-time Monitoring</a>
-                    <a href="/features/custom-reports">Custom Reports</a>
-                    <a href="/features/api-integration">API Integration</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <a href="#" class="nav-link">Pricing <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-popup">
-                    <a href="/pricing/free">Free Plan</a>
-                    <a href="/pricing/pro">Pro Plan</a>
-                    <a href="/pricing/enterprise">Enterprise Plan</a>
-                    <a href="/pricing/custom">Custom Solutions</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-popup">
-                    <a href="/services/penetration-testing">Penetration Testing</a>
-                    <a href="/services/security-audit">Security Audit</a>
-                    <a href="/services/vulnerability-assessment">Vulnerability Assessment</a>
-                    <a href="/services/security-consulting">Security Consulting</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <a href="#" class="nav-link">Resources <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-popup">
-                    <a href="/pages/resources/guides.html">Guides</a>
-                    <a href="/pages/resources/tutorials.html">Tutorials</a>
-                    <a href="/pages/resources/cheatsheets.html">Cheatsheets</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <a href="#" class="nav-link">Community <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-popup">
-                    <a href="/pages/community/forum.html">Forum</a>
-                    <a href="/pages/community/blog.html">Blog</a>
-                    <a href="/pages/community/events.html">Events</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
-                <div class="nav-popup">
-                    <a href="/pages/about/company.html">Company</a>
-                    <a href="/pages/about/team.html">Team</a>
-                    <a href="/pages/about/careers.html">Careers</a>
-                </div>
-            </div>
-        </div>
-        <div class="nav-button">
-            <div>
-                <a href="/login" class="login-btn">Login</a>
-            </div>
-            <button type="button">Free Sign Up</button>
-        </div>
-    </section>
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="../../home.html">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
 
     <div class="page-content">
         <div class="tool-header">
@@ -454,6 +408,52 @@
         }
     </script>
     <script src="../../app.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
+                </div>
+                <p>Comprehensive web security solutions to protect your digital assets.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/guides">Guides</a></li>
+                    <li><a href="/tutorials">Tutorials</a></li>
+                    <li><a href="/cheatsheets">Cheatsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Scanner. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -1,0 +1,233 @@
+/* Responsive Design Styles */
+
+
+/* General Responsive Styles */
+
+@media (max-width: 1200px) {
+    .container,
+    .about-container,
+    .services-container,
+    .contact-container {
+        padding: 0 20px;
+    }
+    .herotext h1 {
+        font-size: 2.8rem;
+    }
+    .card {
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+
+/* Tablet Styles */
+
+@media (max-width: 768px) {
+    /* Navigation */
+    #nav {
+        padding: 15px 20px;
+    }
+    #nav .nav-links {
+        display: none;
+    }
+    #nav .nav-button {
+        width: auto;
+    }
+    /* Hero Section */
+    #hero {
+        padding: 20px;
+    }
+    .herotext {
+        flex-direction: column;
+    }
+    .herotext .heroFirst {
+        max-width: 100%;
+        text-align: center;
+    }
+    .herotext h1 {
+        font-size: 2.5rem;
+    }
+    /* Cards and Grids */
+    .tool-features,
+    .services-grid,
+    .values-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .feature-card,
+    .service-card,
+    .value-card {
+        padding: 20px;
+    }
+    /* Forms */
+    .scan-form,
+    .check-form,
+    .crack-form {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    .scan-options,
+    .protocol-options,
+    .hash-types {
+        grid-template-columns: 1fr;
+    }
+    /* Results Tables */
+    .table-container {
+        overflow-x: auto;
+    }
+    .results-table {
+        min-width: 600px;
+    }
+    /* Footer */
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .footer-column {
+        text-align: center;
+    }
+    .footer-logo {
+        margin: 0 auto 20px;
+    }
+    .social-links {
+        justify-content: center;
+    }
+}
+
+
+/* Mobile Styles */
+
+@media (max-width: 480px) {
+    /* General */
+    body {
+        font-size: 14px;
+    }
+    /* Headers */
+    .tool-header h1,
+    .about-section h1 {
+        font-size: 2rem;
+    }
+    /* Cards */
+    .tool-features,
+    .services-grid,
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    .feature-card,
+    .service-card,
+    .value-card {
+        margin: 0 10px;
+    }
+    /* Forms */
+    .scan-form,
+    .check-form,
+    .crack-form {
+        padding: 15px;
+    }
+    .input-group input,
+    .input-group select {
+        width: 100%;
+    }
+    /* Results */
+    .results-summary {
+        grid-template-columns: 1fr;
+    }
+    .summary-card {
+        margin: 0 10px;
+    }
+    /* Footer */
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    .footer-links {
+        text-align: center;
+    }
+    /* Back Button */
+    .back-button {
+        margin: 15px;
+    }
+    .back-button a {
+        font-size: 1rem;
+    }
+}
+
+
+/* Print Styles */
+
+@media print {
+    .back-button,
+    .nav-button,
+    .scan-btn,
+    .generate-pdf-btn {
+        display: none;
+    }
+    body {
+        background: white;
+        color: black;
+    }
+    .card,
+    .feature-card,
+    .service-card,
+    .value-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    .results-table {
+        border-collapse: collapse;
+    }
+    .results-table th,
+    .results-table td {
+        border: 1px solid #ddd;
+    }
+}
+
+
+/* Dark Mode Support */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0a0f16;
+        color: #e0e0e0;
+    }
+    .card,
+    .feature-card,
+    .service-card,
+    .value-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    .input-group input,
+    .input-group select {
+        background: rgba(255, 255, 255, 0.05);
+        color: #e0e0e0;
+    }
+}
+
+
+/* High Contrast Mode */
+
+@media (prefers-contrast: high) {
+    body {
+        background: black;
+        color: white;
+    }
+    a {
+        color: yellow;
+    }
+    .card,
+    .feature-card,
+    .service-card,
+    .value-card {
+        border: 2px solid white;
+    }
+}
+
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

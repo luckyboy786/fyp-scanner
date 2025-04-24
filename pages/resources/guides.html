@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Guides - Website Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../home.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .guides-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .guides-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .guides-header h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .guides-header p {
+            font-size: 1.2rem;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .guide-section {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .guide-section h3 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .guide-section h3 i {
+            color: #4CAF50;
+            font-size: 2rem;
+        }
+        
+        .guide-content {
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .guide-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .guide-content h4 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+        
+        .guide-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .guide-content ul li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .guide-content ul li i {
+            color: #4CAF50;
+            margin-top: 0.3rem;
+        }
+        
+        .guide-content code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #fff;
+        }
+        
+        .guide-content pre {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .guide-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .guide-content .note {
+            background: #1a1a1a;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .guide-content .warning {
+            background: #1a1a1a;
+            border-left: 4px solid #FF9800;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .guide-content .tip {
+            background: #1a1a1a;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .guide-content .example {
+            background: #1a1a1a;
+            border-left: 4px solid #9E9E9E;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../../home.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Security Guides</h1>
+            <p>Comprehensive guides to help you understand and implement security best practices</p>
+        </div>
+    </section>
+
+    <div id="guides" class="guides-container">
+        <div class="guides-header">
+            <h2>Security Guides & Best Practices</h2>
+            <p>Learn about security best practices and implementation strategies</p>
+        </div>
+
+        <!-- Web Security Guide -->
+        <div class="guide-section">
+            <h3><i class="fas fa-globe"></i> Web Security Guide</h3>
+            <div class="guide-content">
+                <p>Web security is crucial for protecting your applications from various threats and vulnerabilities. This guide covers essential security measures and best practices for web applications.</p>
+
+                <h4>OWASP Top 10 Vulnerabilities</h4>
+                <p>The OWASP Top 10 is a standard awareness document for developers and web application security. It represents a broad consensus about the most critical security risks to web applications.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Injection:</strong> SQL, NoSQL, OS, and LDAP injection attacks occur when untrusted data is sent to an interpreter as part of a command or query.</li>
+                    <li><i class="fas fa-check"></i> <strong>Broken Authentication:</strong> Application functions related to authentication and session management are often implemented incorrectly.</li>
+                    <li><i class="fas fa-check"></i> <strong>Sensitive Data Exposure:</strong> Many web applications and APIs do not properly protect sensitive data.</li>
+                    <li><i class="fas fa-check"></i> <strong>XML External Entities (XXE):</strong> Many older or poorly configured XML processors evaluate external entity references within XML documents.</li>
+                    <li><i class="fas fa-check"></i> <strong>Broken Access Control:</strong> Restrictions on what authenticated users are allowed to do are often not properly enforced.</li>
+                </ul>
+
+                <div class="note">
+                    <strong>Note:</strong> Always keep your OWASP knowledge up to date as new vulnerabilities are discovered regularly.
+                </div>
+
+                <h4>SQL Injection Prevention</h4>
+                <p>SQL injection is one of the most common web security vulnerabilities. Here's how to prevent it:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Use parameterized queries or prepared statements</li>
+                    <li><i class="fas fa-check"></i> Implement proper input validation</li>
+                    <li><i class="fas fa-check"></i> Use an ORM (Object-Relational Mapping) framework</li>
+                    <li><i class="fas fa-check"></i> Implement proper error handling</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - Parameterized Query:</strong>
+                    <pre><code>// Bad (Vulnerable to SQL Injection)
+const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
+
+// Good (Using Parameterized Query)
+const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+const values = [username, password];</code></pre>
+                </div>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Always validate and sanitize user input before using it in database queries.
+                </div>
+
+                <h4>XSS Protection</h4>
+                <p>Cross-Site Scripting (XSS) attacks inject malicious scripts into web pages. Here's how to prevent them:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Implement Content Security Policy (CSP)</li>
+                    <li><i class="fas fa-check"></i> Use proper output encoding</li>
+                    <li><i class="fas fa-check"></i> Implement input validation</li>
+                    <li><i class="fas fa-check"></i> Use security headers</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - Content Security Policy:</strong>
+                    <pre><code>Content-Security-Policy: default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https:;
+    font-src 'self' https:;</code></pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Never trust user input, even if it's from a trusted source.
+                </div>
+
+                <h4>CSRF Mitigation</h4>
+                <p>Cross-Site Request Forgery (CSRF) attacks trick users into performing unwanted actions. Prevention methods include:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Implement CSRF tokens</li>
+                    <li><i class="fas fa-check"></i> Use SameSite cookie attribute</li>
+                    <li><i class="fas fa-check"></i> Implement proper session management</li>
+                    <li><i class="fas fa-check"></i> Use security headers</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - CSRF Token Implementation:</strong>
+                    <pre><code>// Generate CSRF token
+const csrfToken = generateToken();
+
+// Add token to form
+<form action="/submit" method="POST">
+    <input type="hidden" name="_csrf" value="${csrfToken}">
+    <!-- form fields -->
+</form>
+
+// Verify token on server
+if (req.body._csrf !== session.csrfToken) {
+    return res.status(403).send('Invalid CSRF token');
+}</code></pre>
+                </div>
+
+                <h4>Secure Authentication</h4>
+                <p>Implementing secure authentication is crucial for protecting user accounts. Best practices include:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Use strong password policies</li>
+                    <li><i class="fas fa-check"></i> Implement multi-factor authentication</li>
+                    <li><i class="fas fa-check"></i> Use secure session management</li>
+                    <li><i class="fas fa-check"></i> Implement proper password hashing</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - Password Hashing:</strong>
+                    <pre><code>// Bad (Never store plain text passwords)
+const hashedPassword = password;
+
+// Good (Using bcrypt)
+const hashedPassword = await bcrypt.hash(password, 10);
+
+// Verify password
+const isValid = await bcrypt.compare(password, hashedPassword);</code></pre>
+                </div>
+
+                <div class="note">
+                    <strong>Note:</strong> Always use HTTPS for all authentication-related communications.
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Security Guide -->
+        <div class="guide-section">
+            <h3><i class="fas fa-network-wired"></i> Network Security Guide</h3>
+            <div class="guide-content">
+                <p>Network security is essential for protecting your infrastructure from unauthorized access and attacks. This guide covers key aspects of network security.</p>
+
+                <h4>Firewall Configuration</h4>
+                <p>Proper firewall configuration is crucial for network security. Key considerations include:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Implement default deny policies</li>
+                    <li><i class="fas fa-check"></i> Configure proper access control lists</li>
+                    <li><i class="fas fa-check"></i> Regular rule review and updates</li>
+                    <li><i class="fas fa-check"></i> Monitor firewall logs</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - Basic Firewall Rules:</strong>
+                    <pre><code># Allow SSH
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+# Allow HTTP/HTTPS
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+# Default deny
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT</code></pre>
+                </div>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Regularly audit your firewall rules to remove unnecessary access.
+                </div>
+
+                <h4>VPN Setup</h4>
+                <p>Virtual Private Networks (VPNs) provide secure remote access. Implementation guidelines:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Use strong encryption protocols</li>
+                    <li><i class="fas fa-check"></i> Implement proper authentication</li>
+                    <li><i class="fas fa-check"></i> Regular security updates</li>
+                    <li><i class="fas fa-check"></i> Monitor VPN usage</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - OpenVPN Configuration:</strong>
+                    <pre><code>port 1194
+proto udp
+dev tun
+ca ca.crt
+cert server.crt
+key server.key
+dh dh2048.pem
+server 10.8.0.0 255.255.255.0
+push "redirect-gateway def1"
+push "dhcp-option DNS 8.8.8.8"
+keepalive 10 120
+cipher AES-256-CBC
+comp-lzo
+user nobody
+group nobody
+persist-key
+persist-tun
+status openvpn-status.log
+log-append openvpn.log
+verb 3</code></pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Always use strong encryption for VPN connections.
+                </div>
+
+                <h4>Network Monitoring</h4>
+                <p>Effective network monitoring helps detect and prevent security incidents:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Implement intrusion detection systems</li>
+                    <li><i class="fas fa-check"></i> Use network monitoring tools</li>
+                    <li><i class="fas fa-check"></i> Regular log analysis</li>
+                    <li><i class="fas fa-check"></i> Set up alerts for suspicious activity</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - Network Monitoring Commands:</strong>
+                    <pre><code># Monitor network traffic
+tcpdump -i eth0
+
+# Check open ports
+netstat -tulpn
+
+# Monitor system logs
+tail -f /var/log/syslog
+
+# Check for suspicious connections
+lsof -i</code></pre>
+                </div>
+
+                <div class="note">
+                    <strong>Note:</strong> Regular monitoring and analysis of network traffic is essential for security.
+                </div>
+            </div>
+        </div>
+
+        <!-- API Security Guide -->
+        <div class="guide-section">
+            <h3><i class="fas fa-code"></i> API Security Guide</h3>
+            <div class="guide-content">
+                <p>API security is crucial for protecting your application's data and functionality. This guide covers essential API security practices.</p>
+
+                <h4>API Authentication</h4>
+                <p>Proper authentication is essential for API security. Best practices include:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Use OAuth 2.0 or JWT</li>
+                    <li><i class="fas fa-check"></i> Implement proper token management</li>
+                    <li><i class="fas fa-check"></i> Use secure communication</li>
+                    <li><i class="fas fa-check"></i> Regular token rotation</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - JWT Implementation:</strong>
+                    <pre><code>// Generate JWT token
+const token = jwt.sign(
+    { userId: user.id, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: '1h' }
+);
+
+// Verify JWT token
+const decoded = jwt.verify(token, process.env.JWT_SECRET);</code></pre>
+                </div>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Always use HTTPS for API communications.
+                </div>
+
+                <h4>Rate Limiting</h4>
+                <p>Rate limiting helps prevent abuse of your API. Implementation guidelines:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Set appropriate rate limits</li>
+                    <li><i class="fas fa-check"></i> Implement proper error handling</li>
+                    <li><i class="fas fa-check"></i> Monitor API usage</li>
+                    <li><i class="fas fa-check"></i> Adjust limits based on usage patterns</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - Rate Limiting Implementation:</strong>
+                    <pre><code>// Using Express Rate Limit
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+
+app.use('/api/', limiter);</code></pre>
+                </div>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Always implement proper rate limiting to prevent API abuse.
+                </div>
+
+                <h4>Input Validation</h4>
+                <p>Proper input validation is crucial for API security:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Validate all input parameters</li>
+                    <li><i class="fas fa-check"></i> Use proper data types</li>
+                    <li><i class="fas fa-check"></i> Implement proper error handling</li>
+                    <li><i class="fas fa-check"></i> Regular security testing</li>
+                </ul>
+
+                <div class="example">
+                    <strong>Example - Input Validation:</strong>
+                    <pre><code>// Using Joi for validation
+const schema = Joi.object({
+    username: Joi.string().min(3).max(30).required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(8).required()
+});
+
+const { error, value } = schema.validate(req.body);
+if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+}</code></pre>
+                </div>
+
+                <div class="note">
+                    <strong>Note:</strong> Always validate and sanitize all API input.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
+                </div>
+                <p>Comprehensive web security solutions to protect your digital assets.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/guides">Guides</a></li>
+                    <li><a href="/tutorials">Tutorials</a></li>
+                    <li><a href="/cheatsheets">Cheatsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Scanner. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+
+</html>

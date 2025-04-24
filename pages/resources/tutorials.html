@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Tutorials - Website Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../home.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .tutorials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .tutorials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .tutorials-header h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .tutorials-header p {
+            font-size: 1.2rem;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tutorial-section {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tutorial-section h3 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .tutorial-section h3 i {
+            color: #4CAF50;
+            font-size: 2rem;
+        }
+        
+        .tutorial-content {
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .tutorial-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tutorial-content h4 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+        
+        .tutorial-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .tutorial-content ul li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .tutorial-content ul li i {
+            color: #4CAF50;
+            margin-top: 0.3rem;
+        }
+        
+        .tutorial-content code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #fff;
+        }
+        
+        .tutorial-content pre {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .tutorial-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .tutorial-content .note {
+            background: #1a1a1a;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .tutorial-content .warning {
+            background: #1a1a1a;
+            border-left: 4px solid #FF9800;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .tutorial-content .tip {
+            background: #1a1a1a;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .tutorial-content .example {
+            background: #1a1a1a;
+            border-left: 4px solid #9E9E9E;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+        
+        .difficulty.beginner {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .difficulty.intermediate {
+            background: #FFC107;
+            color: #333;
+        }
+        
+        .difficulty.advanced {
+            background: #F44336;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../../home.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Security Tutorials</h1>
+            <p>Step-by-step tutorials to help you implement security measures and protect your systems</p>
+        </div>
+    </section>
+
+    <div class="tutorials-container">
+        <div class="tutorials-header">
+            <h2>Step-by-Step Security Tutorials</h2>
+            <p>Learn security implementation through practical, hands-on tutorials</p>
+        </div>
+
+        <!-- SSL/TLS Setup Tutorial -->
+        <div class="tutorial-section">
+            <h3>
+                <i class="fas fa-lock"></i> Setting Up SSL/TLS
+                <span class="difficulty beginner">Beginner</span>
+            </h3>
+            <div class="tutorial-content">
+                <p>This tutorial will guide you through the process of securing your website with SSL/TLS certificates and enabling HTTPS.</p>
+
+                <h4>Prerequisites</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> A domain name</li>
+                    <li><i class="fas fa-check"></i> Access to your web server</li>
+                    <li><i class="fas fa-check"></i> Basic understanding of web servers</li>
+                </ul>
+
+                <h4>Step 1: Generate SSL Certificate</h4>
+                <p>First, you'll need to generate an SSL certificate. You can use Let's Encrypt for free certificates:</p>
+                <pre><code>sudo apt-get update
+sudo apt-get install certbot
+sudo certbot --nginx -d yourdomain.com</code></pre>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Let's Encrypt certificates are valid for 90 days and can be automatically renewed.
+                </div>
+
+                <h4>Step 2: Configure Web Server</h4>
+                <p>Configure your web server to use the SSL certificate. For Nginx, add this to your configuration:</p>
+                <pre><code>server {
+    listen 443 ssl;
+    server_name yourdomain.com;
+    ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+    # Additional SSL configuration
+}</code></pre>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Always keep your SSL certificates and private keys secure.
+                </div>
+
+                <h4>Step 3: Enable HTTPS</h4>
+                <p>Redirect all HTTP traffic to HTTPS by adding this to your configuration:</p>
+                <pre><code>server {
+    listen 80;
+    server_name yourdomain.com;
+    return 301 https://$server_name$request_uri;
+}</code></pre>
+
+                <h4>Step 4: Test Configuration</h4>
+                <p>Test your SSL configuration using online tools:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> SSL Labs Server Test</li>
+                    <li><i class="fas fa-check"></i> Check SSL certificate validity</li>
+                    <li><i class="fas fa-check"></i> Verify HTTPS redirection</li>
+                </ul>
+
+                <div class="note">
+                    <strong>Note:</strong> Regularly monitor your SSL certificate expiration dates.
+                </div>
+            </div>
+        </div>
+
+        <!-- 2FA Implementation Tutorial -->
+        <div class="tutorial-section">
+            <h3>
+                <i class="fas fa-shield-alt"></i> Implementing 2FA
+                <span class="difficulty intermediate">Intermediate</span>
+            </h3>
+            <div class="tutorial-content">
+                <p>This tutorial will guide you through implementing two-factor authentication in your application.</p>
+
+                <h4>Prerequisites</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> Basic understanding of authentication</li>
+                    <li><i class="fas fa-check"></i> Access to your application code</li>
+                    <li><i class="fas fa-check"></i> QR code generation library</li>
+                </ul>
+
+                <h4>Step 1: Choose 2FA Method</h4>
+                <p>Select the appropriate 2FA method for your application:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Time-based One-Time Password (TOTP)</li>
+                    <li><i class="fas fa-check"></i> SMS-based verification</li>
+                    <li><i class="fas fa-check"></i> Email-based verification</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>Tip:</strong> TOTP is recommended for most applications due to its security and reliability.
+                </div>
+
+                <h4>Step 2: Set Up Authentication</h4>
+                <p>Implement the authentication flow in your application:</p>
+                <pre><code>// Generate secret key
+const secret = speakeasy.generateSecret({
+    name: 'Your App Name'
+});
+
+// Generate QR code
+const qrCode = qrcode.toDataURL(secret.otpauth_url);
+
+// Verify token
+const verified = speakeasy.totp.verify({
+    secret: secret.base32,
+    encoding: 'base32',
+    token: userToken
+});</code></pre>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Always store 2FA secrets securely and never expose them.
+                </div>
+
+                <h4>Step 3: Implement Backup Codes</h4>
+                <p>Generate and store backup codes for account recovery:</p>
+                <pre><code>const backupCodes = generateBackupCodes();
+const hashedCodes = backupCodes.map(code => hashCode(code));
+// Store hashed codes in database</code></pre>
+
+                <h4>Step 4: Test Implementation</h4>
+                <p>Test your 2FA implementation thoroughly:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Test normal authentication flow</li>
+                    <li><i class="fas fa-check"></i> Test backup code recovery</li>
+                    <li><i class="fas fa-check"></i> Test error handling</li>
+                </ul>
+
+                <div class="note">
+                    <strong>Note:</strong> Always provide clear instructions to users about 2FA setup and recovery.
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Headers Tutorial -->
+        <div class="tutorial-section">
+            <h3>
+                <i class="fas fa-headers"></i> Security Headers
+                <span class="difficulty intermediate">Intermediate</span>
+            </h3>
+            <div class="tutorial-content">
+                <p>This tutorial will guide you through implementing security headers to protect your web application.</p>
+
+                <h4>Prerequisites</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> Access to web server configuration</li>
+                    <li><i class="fas fa-check"></i> Understanding of HTTP headers</li>
+                </ul>
+
+                <h4>Step 1: Configure CSP</h4>
+                <p>Implement Content Security Policy to prevent XSS attacks:</p>
+                <pre><code>Content-Security-Policy: default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https:;
+    font-src 'self' https:;</code></pre>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Start with a strict CSP and gradually relax it based on your needs.
+                </div>
+
+                <h4>Step 2: Set Up HSTS</h4>
+                <p>Enable HTTP Strict Transport Security:</p>
+                <pre><code>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</code></pre>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Only enable HSTS after ensuring your site works properly with HTTPS.
+                </div>
+
+                <h4>Step 3: Implement X-Frame-Options</h4>
+                <p>Prevent clickjacking attacks:</p>
+                <pre><code>X-Frame-Options: DENY</code></pre>
+
+                <h4>Step 4: Add XSS Protection</h4>
+                <p>Enable browser's XSS protection:</p>
+                <pre><code>X-XSS-Protection: 1; mode=block</code></pre>
+
+                <div class="note">
+                    <strong>Note:</strong> Regularly test your security headers using online tools.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
+                </div>
+                <p>Comprehensive web security solutions to protect your digital assets.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/guides">Guides</a></li>
+                    <li><a href="/tutorials">Tutorials</a></li>
+                    <li><a href="/cheatsheets">Cheatsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Scanner. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+
+</html>

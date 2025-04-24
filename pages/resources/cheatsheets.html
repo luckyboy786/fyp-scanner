@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Cheatsheets - Website Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../home.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .cheatsheets-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .cheatsheets-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .cheatsheets-header h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cheatsheets-header p {
+            font-size: 1.2rem;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cheatsheet-section {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cheatsheet-section h3 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .cheatsheet-section h3 i {
+            color: #4CAF50;
+            font-size: 2rem;
+        }
+        
+        .cheatsheet-content {
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .cheatsheet-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .cheatsheet-content h4 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+        
+        .cheatsheet-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .cheatsheet-content ul li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .cheatsheet-content ul li i {
+            color: #4CAF50;
+            margin-top: 0.3rem;
+        }
+        
+        .cheatsheet-content code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #fff;
+        }
+        
+        .cheatsheet-content pre {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .cheatsheet-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .cheatsheet-content .note {
+            background: #1a1a1a;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .cheatsheet-content .warning {
+            background: #1a1a1a;
+            border-left: 4px solid #FF9800;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .cheatsheet-content .tip {
+            background: #1a1a1a;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .cheatsheet-content .example {
+            background: #1a1a1a;
+            border-left: 4px solid #9E9E9E;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+        }
+        
+        .download-button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .download-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../../home.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Security Cheatsheets</h1>
+            <p>Quick reference guides for security best practices and common commands</p>
+        </div>
+    </section>
+
+    <div class="cheatsheets-container">
+        <div class="cheatsheets-header">
+            <h2>Quick Reference Guides</h2>
+            <p>Comprehensive security cheatsheets for quick reference</p>
+        </div>
+
+        <!-- Web Security Cheatsheet -->
+        <div class="cheatsheet-section">
+            <h3><i class="fas fa-globe"></i> Web Security Cheatsheet</h3>
+            <div class="cheatsheet-content">
+                <p>A comprehensive reference guide for web security best practices and common vulnerabilities.</p>
+
+                <h4>OWASP Top 10</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Injection:</strong> Use parameterized queries, input validation</li>
+                    <li><i class="fas fa-check"></i> <strong>Broken Authentication:</strong> Implement MFA, secure session management</li>
+                    <li><i class="fas fa-check"></i> <strong>Sensitive Data Exposure:</strong> Encrypt data in transit and at rest</li>
+                    <li><i class="fas fa-check"></i> <strong>XXE:</strong> Disable XML external entity processing</li>
+                    <li><i class="fas fa-check"></i> <strong>Broken Access Control:</strong> Implement proper authorization checks</li>
+                </ul>
+
+                <h4>Security Headers</h4>
+                <pre><code>Content-Security-Policy: default-src 'self'
+Strict-Transport-Security: max-age=31536000
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block</code></pre>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Always implement security headers to protect against common web vulnerabilities.
+                </div>
+
+                <h4>Common Attacks Prevention</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>SQL Injection:</strong> Use prepared statements, input validation</li>
+                    <li><i class="fas fa-check"></i> <strong>XSS:</strong> Output encoding, CSP implementation</li>
+                    <li><i class="fas fa-check"></i> <strong>CSRF:</strong> Use CSRF tokens, SameSite cookies</li>
+                    <li><i class="fas fa-check"></i> <strong>Clickjacking:</strong> X-Frame-Options header</li>
+                </ul>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Regularly update your security knowledge and tools.
+                </div>
+
+                <a href="/cheatsheets/web-security.pdf" class="download-button">Download PDF</a>
+            </div>
+        </div>
+
+        <!-- Network Security Cheatsheet -->
+        <div class="cheatsheet-section">
+            <h3><i class="fas fa-network-wired"></i> Network Security Cheatsheet</h3>
+            <div class="cheatsheet-content">
+                <p>Essential network security commands and configuration guidelines.</p>
+
+                <h4>Firewall Rules</h4>
+                <pre><code># Allow SSH
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+# Allow HTTP/HTTPS
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+# Default deny
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT</code></pre>
+
+                <h4>VPN Configuration</h4>
+                <pre><code># OpenVPN server config
+port 1194
+proto udp
+dev tun
+ca ca.crt
+cert server.crt
+key server.key
+dh dh2048.pem
+server 10.8.0.0 255.255.255.0
+push "redirect-gateway def1"
+push "dhcp-option DNS 8.8.8.8"
+keepalive 10 120
+cipher AES-256-CBC
+comp-lzo
+user nobody
+group nobody
+persist-key
+persist-tun
+status openvpn-status.log
+log-append openvpn.log
+verb 3</code></pre>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Regularly audit your firewall rules and VPN configurations.
+                </div>
+
+                <h4>Network Commands</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Port Scan:</strong> <code>nmap -sV target</code></li>
+                    <li><i class="fas fa-check"></i> <strong>Network Monitor:</strong> <code>tcpdump -i eth0</code></li>
+                    <li><i class="fas fa-check"></i> <strong>Route Check:</strong> <code>traceroute target</code></li>
+                    <li><i class="fas fa-check"></i> <strong>DNS Lookup:</strong> <code>dig domain</code></li>
+                </ul>
+
+                <div class="note">
+                    <strong>Note:</strong> Always use network monitoring tools to detect suspicious activity.
+                </div>
+
+                <a href="/cheatsheets/network-security.pdf" class="download-button">Download PDF</a>
+            </div>
+        </div>
+
+        <!-- Linux Security Cheatsheet -->
+        <div class="cheatsheet-section">
+            <h3><i class="fas fa-terminal"></i> Linux Security Cheatsheet</h3>
+            <div class="cheatsheet-content">
+                <p>Common Linux security commands and system hardening tips.</p>
+
+                <h4>User Management</h4>
+                <pre><code># Create user
+useradd -m username
+passwd username
+
+# Add to sudo group
+usermod -aG sudo username
+
+# Check user permissions
+id username
+groups username</code></pre>
+
+                <h4>File Permissions</h4>
+                <pre><code># Set permissions
+chmod 755 directory
+chmod 644 file
+
+# Change ownership
+chown user:group file
+
+# Set ACL
+setfacl -m u:user:rwx file</code></pre>
+
+                <div class="tip">
+                    <strong>Tip:</strong> Follow the principle of least privilege when setting permissions.
+                </div>
+
+                <h4>System Hardening</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> <strong>Disable root login:</strong> Edit /etc/ssh/sshd_config</li>
+                    <li><i class="fas fa-check"></i> <strong>Enable firewall:</strong> <code>ufw enable</code></li>
+                    <li><i class="fas fa-check"></i> <strong>Update system:</strong> <code>apt update && apt upgrade</code></li>
+                    <li><i class="fas fa-check"></i> <strong>Check open ports:</strong> <code>netstat -tulpn</code></li>
+                </ul>
+
+                <div class="warning">
+                    <strong>Warning:</strong> Always backup your system before making security changes.
+                </div>
+
+                <a href="/cheatsheets/linux-security.pdf" class="download-button">Download PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
+                </div>
+                <p>Comprehensive web security solutions to protect your digital assets.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/guides">Guides</a></li>
+                    <li><a href="/tutorials">Tutorials</a></li>
+                    <li><a href="/cheatsheets">Cheatsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Scanner. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+
+</html>

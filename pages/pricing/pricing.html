@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - Website Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../home.css">
+    <style>
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .pricing-header h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-header p {
+            font-size: 1.2rem;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .plan-card {
+            background: #363636;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #4CAF50;
+        }
+        
+        .plan-card.pro::before {
+            background: #2196F3;
+        }
+        
+        .plan-card.enterprise::before {
+            background: #9C27B0;
+        }
+        
+        .plan-card h2 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .plan-card .price {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin: 1.5rem 0;
+            font-weight: 700;
+        }
+        
+        .plan-card .price.free {
+            color: #e0e0e0;
+        }
+        
+        .plan-card .price.enterprise {
+            color: #9C27B0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+        
+        .feature-list li i {
+            color: #4CAF50;
+            margin-right: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 75%;
+            text-align: center;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .cta-button.pro {
+            background: #2196F3;
+        }
+        
+        .cta-button.pro:hover {
+            background: #1976D2;
+        }
+        
+        .cta-button.enterprise {
+            background: #9C27B0;
+        }
+        
+        .cta-button.enterprise:hover {
+            background: #7B1FA2;
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: #2196F3;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../../home.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="pricing-container">
+        <div class="pricing-header">
+            <h1>Choose Your Security Plan</h1>
+            <p>Select the perfect plan to protect your website with our advanced vulnerability scanning technology</p>
+        </div>
+
+        <div class="pricing-plans">
+            <!-- Free Plan -->
+            <div class="plan-card">
+                <h2>Free Plan</h2>
+                <div class="price free">$0/month</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 5 scans per month</li>
+                    <li><i class="fas fa-check"></i> Basic vulnerability detection</li>
+                    <li><i class="fas fa-check"></i> Standard report generation</li>
+                    <li><i class="fas fa-check"></i> Community support</li>
+                    <li><i class="fas fa-check"></i> Basic security features</li>
+                    <li><i class="fas fa-check"></i> 30-day report history</li>
+                </ul>
+                <a href="/signup" class="cta-button">Get Started Free</a>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="plan-card pro">
+                <div class="popular-tag">Most Popular</div>
+                <h2>Pro Plan</h2>
+                <div class="price">$99/month</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Unlimited scans</li>
+                    <li><i class="fas fa-check"></i> Advanced vulnerability detection</li>
+                    <li><i class="fas fa-check"></i> Custom scan configurations</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Advanced security features</li>
+                    <li><i class="fas fa-check"></i> API access</li>
+                    <li><i class="fas fa-check"></i> Unlimited report history</li>
+                </ul>
+                <a href="/signup" class="cta-button pro">Start Pro Plan</a>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="plan-card enterprise">
+                <h2>Enterprise Plan</h2>
+                <div class="price enterprise">Contact Sales</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Unlimited everything</li>
+                    <li><i class="fas fa-check"></i> Enterprise-grade security</li>
+                    <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+                    <li><i class="fas fa-check"></i> Custom integrations</li>
+                    <li><i class="fas fa-check"></i> SLA guarantees</li>
+                    <li><i class="fas fa-check"></i> On-premise options</li>
+                    <li><i class="fas fa-check"></i> Custom API development</li>
+                </ul>
+                <a href="/contact-sales" class="cta-button enterprise">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
+                </div>
+                <p>Comprehensive web security solutions to protect your digital assets.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/guides">Guides</a></li>
+                    <li><a href="/tutorials">Tutorials</a></li>
+                    <li><a href="/cheatsheets">Cheatsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Security Scanner. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../app.js"></script>
+</body>
+
+</html>
