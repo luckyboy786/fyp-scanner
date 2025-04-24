@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Vulnerability Scanner - Professional Security Tools</title>
+    <meta name="description" content="Professional website vulnerability scanner detecting SQLi, XSS, command injection, XXE and 75+ web app vulnerabilities with detailed reporting and remediation steps.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <section id="nav">
+        <div class="nav-img">
+            <img src="pentesttools-logo.png" alt="PenTest Tools Logo">
+        </div>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="#" class="nav-link">Tools <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="pages/tools/vulnerability-scanner.html">Vulnerability Scanner</a>
+                    <a href="pages/tools/network-scanner.html ">Network Scanner</a>
+                    <a href="pages/tools/password-cracker.html ">Password Cracker</a>
+                    <a href="pages/tools/port-scanner.html">Port Scanner</a>
+                    <a href="pages/tools/ssl-checker.html">SSL Checker</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Features <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/features/automated-scanning">Automated Scanning</a>
+                    <a href="/features/real-time-monitoring">Real-time Monitoring</a>
+                    <a href="/features/custom-reports">Custom Reports</a>
+                    <a href="/features/api-integration">API Integration</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Pricing <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pricing/free">Free Plan</a>
+                    <a href="/pricing/pro">Pro Plan</a>
+                    <a href="/pricing/enterprise">Enterprise Plan</a>
+                    <a href="/pricing/custom">Custom Solutions</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/services/penetration-testing">Penetration Testing</a>
+                    <a href="/services/security-audit">Security Audit</a>
+                    <a href="/services/vulnerability-assessment">Vulnerability Assessment</a>
+                    <a href="/services/security-consulting">Security Consulting</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Resources <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pages/resources/guides.html">Guides</a>
+                    <a href="/pages/resources/tutorials.html">Tutorials</a>
+                    <a href="/pages/resources/cheatsheets.html">Cheatsheets</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Community <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pages/community/forum.html">Forum</a>
+                    <a href="/pages/community/blog.html">Blog</a>
+                    <a href="/pages/community/events.html">Events</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pages/about/company.html">Company</a>
+                    <a href="/pages/about/team.html">Team</a>
+                    <a href="/pages/about/careers.html">Careers</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <div>
+                <a href="/login" class="login-btn">Login</a>
+            </div>
+            <button type="button">Free Sign Up</button>
+        </div>
+    </section>
+
+    <section id="hero">
+        <div class="heroimg">
+            <img src="download.svg" alt="Decorative pattern">
+        </div>
+        <div class="secondimg">
+            <img src="heroimg.svg" alt="Security illustration">
+        </div>
+        <div class="herotext">
+            <div class="heroFirst">
+                <h1>Website Vulnerability Scanner</h1>
+                <p>
+                    <i class="fas fa-shield-alt"></i> Our custom-built Website Vulnerability Scanner detects SQLi, XSS, command injection, XXE, and 75+ more web app vulnerabilities, using strategically crafted test payloads to validate their exploitability.
+                </p>
+                <p>
+                    <i class="fas fa-code"></i> Engineered to handle modern web app architectures, it efficiently crawls SPAs and other JavaScript-heavy websites, detects hidden API endpoints, and navigates complex authentication flows.
+                </p>
+                <p>
+                    <i class="fas fa-file-alt"></i> Export findings into customizable reports - complete with risk prioritization, actionable evidence (screenshots, attack replay, HTTP request/response), and clear remediation steps to speed up the fixes
+                    that make a difference.
+                </p>
+
+                <div class="herobtn">
+                    <button><i class="fas fa-rocket"></i> Create Free Account</button>
+                </div>
+            </div>
+            <div class="heroScan">
+                <div class="card">
+                    <div class="tabs">
+                        <div class="tab active" onclick="showContent(0)">
+                            <i class="fas fa-bolt"></i> Light scan
+                        </div>
+                        <div class="tab" onclick="showContent(1)">
+                            <i class="fas fa-search"></i> Deep scan
+                        </div>
+                        <div class="tab" onclick="showContent(2)">
+                            <i class="fas fa-terminal"></i> CLI scan
+                        </div>
+                    </div>
+
+                    <label for="target-url">
+                        <i class="fas fa-crosshairs"></i> Target
+                    </label>
+                    <div class="input-group">
+                        <select id="protocol">
+                            <option value="https">HTTPS</option>
+                            <option value="http">HTTP</option>
+                        </select>
+                        <input type="text" id="target-url" placeholder="www.example.com">
+                    </div>
+
+                    <button class="scan-btn">
+                        <i class="fas fa-play"></i> Start scan
+                    </button>
+
+                    <div class="footer">
+                        <span><i class="fas fa-info-circle"></i> A light scan with the Website Vulnerability Scanner runs...</span>
+                        <a href="#">See more <i class="fas fa-chevron-down"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="heroLinks">
+            <a href="#"><i class="fas fa-chart-bar"></i> Full sample report</a>
+            <a href="#"><i class="fas fa-cog"></i> How it works</a>
+            <a href="#"><i class="fas fa-chart-line"></i> Benchmark</a>
+            <a href="#">Tool docs <i class="fas fa-external-link-alt"></i></a>
+            <a href="#">API <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <div class="heroimg lastImg">
+            <img src="download.svg" alt="Decorative pattern">
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

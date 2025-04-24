@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Scanner - PenTest Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../home.css">
+    <style>
+        .page-content {
+            padding: 40px 60px;
+            color: white;
+        }
+        
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .tool-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tool-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card h3 {
+            color: #f1c40f;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #a7b9cc;
+            line-height: 1.6;
+        }
+        
+        .scan-form {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .scan-results {
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .results-header h2 {
+            color: #f1c40f;
+            margin: 0;
+        }
+        
+        .generate-pdf-btn {
+            background: rgba(241, 196, 15, 0.1);
+            color: #f1c40f;
+            border: 1px solid rgba(241, 196, 15, 0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .generate-pdf-btn:hover {
+            background: rgba(241, 196, 15, 0.2);
+        }
+        
+        .results-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .summary-title {
+            display: block;
+            color: #a7b9cc;
+            margin-bottom: 10px;
+        }
+        
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .summary-value.success {
+            color: #2ecc71;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #a7b9cc;
+        }
+        
+        .results-table th {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            text-align: left;
+            color: #f1c40f;
+            font-weight: 600;
+        }
+        
+        .results-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .results-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .results-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .status.active {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+        }
+        
+        .status.inactive {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+        
+        .ports {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .port {
+            background: rgba(241, 196, 15, 0.1);
+            color: #f1c40f;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="nav">
+        <div class="nav-img">
+            <img src="../../pentesttools-logo.png" alt="PenTest Tools Logo">
+        </div>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="#" class="nav-link">Tools <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pages/tools/vulnerability-scanner.html">Vulnerability Scanner</a>
+                    <a href="/pages/tools/network-scanner.html">Network Scanner</a>
+                    <a href="/pages/tools/password-cracker.html">Password Cracker</a>
+                    <a href="/pages/tools/port-scanner.html">Port Scanner</a>
+                    <a href="/pages/tools/ssl-checker.html">SSL Checker</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Features <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/features/automated-scanning">Automated Scanning</a>
+                    <a href="/features/real-time-monitoring">Real-time Monitoring</a>
+                    <a href="/features/custom-reports">Custom Reports</a>
+                    <a href="/features/api-integration">API Integration</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Pricing <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pricing/free">Free Plan</a>
+                    <a href="/pricing/pro">Pro Plan</a>
+                    <a href="/pricing/enterprise">Enterprise Plan</a>
+                    <a href="/pricing/custom">Custom Solutions</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/services/penetration-testing">Penetration Testing</a>
+                    <a href="/services/security-audit">Security Audit</a>
+                    <a href="/services/vulnerability-assessment">Vulnerability Assessment</a>
+                    <a href="/services/security-consulting">Security Consulting</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Resources <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pages/resources/guides.html">Guides</a>
+                    <a href="/pages/resources/tutorials.html">Tutorials</a>
+                    <a href="/pages/resources/cheatsheets.html">Cheatsheets</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">Community <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pages/community/forum.html">Forum</a>
+                    <a href="/pages/community/blog.html">Blog</a>
+                    <a href="/pages/community/events.html">Events</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                <div class="nav-popup">
+                    <a href="/pages/about/company.html">Company</a>
+                    <a href="/pages/about/team.html">Team</a>
+                    <a href="/pages/about/careers.html">Careers</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-button">
+            <div>
+                <a href="/login" class="login-btn">Login</a>
+            </div>
+            <button type="button">Free Sign Up</button>
+        </div>
+    </section>
+
+    <div class="page-content">
+        <div class="tool-header">
+            <h1>Network Scanner</h1>
+            <p>Comprehensive network analysis and security assessment tool</p>
+        </div>
+
+        <div class="tool-features">
+            <div class="feature-card">
+                <h3><i class="fas fa-network-wired"></i> Comprehensive Analysis</h3>
+                <p>Scan and analyze your entire network infrastructure for vulnerabilities and security issues.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class="fas fa-shield-alt"></i> Security Assessment</h3>
+                <p>Identify potential security risks and vulnerabilities in your network devices and services.</p>
+            </div>
+            <div class="feature-card">
+                <h3><i class="fas fa-chart-line"></i> Real-time Monitoring</h3>
+                <p>Monitor network activity and detect suspicious behavior in real-time.</p>
+            </div>
+        </div>
+
+        <div class="scan-form">
+            <h2>Start Network Scan</h2>
+            <div class="input-group">
+                <input type="text" id="network-range" placeholder="Enter network range (e.g., 192.168.1.0/24)">
+            </div>
+            <button class="scan-btn" onclick="startScan()">
+                <i class="fas fa-play"></i> Start Scan
+            </button>
+        </div>
+
+        <div class="scan-results" id="scanResults" style="display: none;">
+            <div class="results-header">
+                <h2>Network Scan Results</h2>
+                <button class="generate-pdf-btn" onclick="generateReport()">
+                    <i class="fas fa-file-pdf"></i> Generate PDF Report
+                </button>
+            </div>
+            <div class="results-summary">
+                <div class="summary-card">
+                    <span class="summary-title">Total Devices</span>
+                    <span class="summary-value" id="totalDevices">0</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-title">Active Hosts</span>
+                    <span class="summary-value success" id="activeHosts">0</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-title">Open Ports</span>
+                    <span class="summary-value" id="openPorts">0</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-title">Scan Time</span>
+                    <span class="summary-value" id="scanTime">0s</span>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>IP Address</th>
+                            <th>Hostname</th>
+                            <th>Status</th>
+                            <th>Open Ports</th>
+                            <th>OS Detection</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scanResultsBody">
+                        <!-- Results will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentScanType = 'quick';
+
+        function selectScanType(type) {
+            currentScanType = type;
+            document.querySelectorAll('.scan-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+
+        function startScan() {
+            const networkRange = document.getElementById('network-range').value;
+
+            if (!networkRange) {
+                alert('Please enter a network range');
+                return;
+            }
+
+            // Show loading state
+            const scanBtn = document.querySelector('.scan-btn');
+            scanBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scanning...';
+            scanBtn.disabled = true;
+
+            // Hide results if they were previously shown
+            document.getElementById('scanResults').style.display = 'none';
+
+            // Simulate scan completion after 3 seconds
+            setTimeout(() => {
+                        scanBtn.innerHTML = '<i class="fas fa-play"></i> Start Scan';
+                        scanBtn.disabled = false;
+
+                        // Show results
+                        document.getElementById('scanResults').style.display = 'block';
+
+                        // Generate sample results based on scan type
+                        let results = [];
+                        let activeCount = 0;
+                        let openPortsCount = 0;
+
+                        if (currentScanType === 'quick') {
+                            results = [{
+                                ip: networkRange,
+                                hostname: 'example.com',
+                                status: 'Active',
+                                ports: ['80', '443'],
+                                os: 'Linux'
+                            }];
+                            activeCount = 1;
+                            openPortsCount = 2;
+                        } else if (currentScanType === 'full') {
+                            results = [{
+                                ip: networkRange,
+                                hostname: 'example.com',
+                                status: 'Active',
+                                ports: ['21', '22', '80', '443', '3306'],
+                                os: 'Linux'
+                            }];
+                            activeCount = 1;
+                            openPortsCount = 5;
+                        } else if (currentScanType === 'service') {
+                            results = [{
+                                ip: networkRange,
+                                hostname: 'example.com',
+                                status: 'Active',
+                                ports: ['21 (FTP)', '22 (SSH)', '80 (HTTP)', '443 (HTTPS)', '3306 (MySQL)'],
+                                os: 'Linux 4.15.0'
+                            }];
+                            activeCount = 1;
+                            openPortsCount = 5;
+                        } else if (currentScanType === 'custom') {
+                            results = [{
+                                ip: networkRange,
+                                hostname: 'example.com',
+                                status: 'Active',
+                                ports: ['21 (FTP)', '22 (SSH)', '80 (HTTP)', '443 (HTTPS)', '3306 (MySQL)', '5432 (PostgreSQL)'],
+                                os: 'Linux 4.15.0'
+                            }];
+                            activeCount = 1;
+                            openPortsCount = 6;
+                        }
+
+                        // Update summary counts
+                        document.getElementById('totalDevices').textContent = results.length;
+                        document.getElementById('activeHosts').textContent = activeCount;
+                        document.getElementById('openPorts').textContent = openPortsCount;
+                        document.getElementById('scanTime').textContent = '3.5s';
+
+                        // Populate results table
+                        const tbody = document.getElementById('scanResultsBody');
+                        tbody.innerHTML = '';
+
+                        results.forEach(result => {
+                                    const row = document.createElement('tr');
+                                    row.innerHTML = `
+                        <td>${result.ip}</td>
+                        <td>${result.hostname}</td>
+                        <td><span class="status ${result.status.toLowerCase()}">${result.status}</span></td>
+                        <td>
+                            <div class="ports">
+                                ${result.ports.map(port => `<span class="port">${port}</span>`).join('')}
+                            </div>
+                        </td>
+                        <td>${result.os}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }, 3000);
+        }
+    </script>
+    <script src="../../app.js"></script>
+</body>
+
+</html>

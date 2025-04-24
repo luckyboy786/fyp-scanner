@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg preserveAspectRatio="none" id="uuid-a5bd61bd-4dba-4367-bfcf-862bca734190" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1921.64 84.5">
+  <defs>
+    <radialGradient id="uuid-9b7636db-2b02-41e9-a459-68a4bac2498e" cx="1178.78" cy="418.56" fx="1178.78" fy="418.56" r="1175.88" gradientTransform="translate(0 241.06) scale(1 .42)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".16" stop-color="#fbfbfb"/>
+      <stop offset=".28" stop-color="#f1f1f1"/>
+      <stop offset=".41" stop-color="#e0e0e0"/>
+      <stop offset=".52" stop-color="#c7c7c7"/>
+      <stop offset=".63" stop-color="#a7a7a7"/>
+      <stop offset=".74" stop-color="#818181"/>
+      <stop offset=".84" stop-color="#535353"/>
+      <stop offset=".95" stop-color="#1f1f1f"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <mask id="uuid-bb20e012-c484-4da9-8090-3ef2bc4ae838" data-name="mask" x="0" y="-84.5" width="2357.41" height="1006.14" maskUnits="userSpaceOnUse">
+      <ellipse cx="1178.78" cy="418.56" rx="1178.63" ry="503.07" fill="url(#uuid-9b7636db-2b02-41e9-a459-68a4bac2498e)" opacity=".7"/>
+    </mask>
+  </defs>
+  <g id="uuid-73fd0ee6-2f44-41c5-9c64-0db60b6f7b6e" data-name="Layer 2">
+    <g mask="url(#uuid-bb20e012-c484-4da9-8090-3ef2bc4ae838)">
+      <g>
+        <path d="m1921.49,14.89H.15" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <path d="m1921.49,32.92H.15" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <path d="m1921.49,48.7H.15" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <path d="m1921.49,62.22H.15" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <path d="m1921.49,73.49H.15" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <path d="m1921.49,83.85H.15" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="963.11" y1=".62" x2="963.11" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1083.29" y1=".62" x2="1041.5" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1205.07" y1=".62" x2="1122.95" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1326.86" y1=".62" x2="1204.39" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1448.63" y1=".62" x2="1285.83" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1570.4" y1=".62" x2="1367.27" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1692.17" y1=".62" x2="1448.71" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1814.66" y1=".62" x2="1530.15" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="838.35" y1=".62" x2="880.14" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="716.58" y1=".62" x2="798.7" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="594.78" y1=".62" x2="717.26" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="473.01" y1=".62" x2="635.82" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="351.24" y1=".62" x2="554.38" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="229.48" y1=".62" x2="472.94" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="391.5" y1="83.85" x2="106.99" y2=".62" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1=".15" y1="7.36" x2="312.54" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+        <line x1="1921.49" y1="7.36" x2="1609.1" y2="83.85" fill="none" stroke="#7d838c" stroke-miterlimit="10" stroke-width="1.3"/>
+      </g>
+    </g>
+  </g>
+</svg>
